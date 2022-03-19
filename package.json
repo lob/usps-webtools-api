@@ -1,0 +1,31 @@
+{
+  "name": "usps-webtools-openapi",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=14.16.0",
+    "npm": ">=7.9.0"
+  },
+  "description": "A collection of OpenAPI specifications for USPS WebTools APIs",
+  "main": "",
+  "config": {
+    "specfile": "usps-webtools-api.yml",
+    "specfile2": "usps-webtools-rate-calculator-api.yml"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "redoc": "redoc-cli bundle $npm_package_config_specfile -t actions/redoc/template.hbs --templateOptions.LOB_ASSETS_URL=https://s3-us-west-2.amazonaws.com/public.lob.com  --templateOptions.keywords=\"Direct Mail, Address Verification\" --templateOptions.description=\"Open source developer documentation for USPS Webtool's API. Working together to improve the developer experience for everyone.\" --templateOptions.image=https://s3-us-west-2.amazonaws.com/public.lob.com/marketing/opengraph2.png --options=docs/redocOptions.json --title=\"USPS WebTools API opensource documentation\" -o docs/index.html",
+    "redoc2": "redoc-cli bundle $npm_package_config_specfile2 -t actions/redoc/template.hbs --templateOptions.LOB_ASSETS_URL=https://s3-us-west-2.amazonaws.com/public.lob.com  --templateOptions.keywords=\"Direct Mail, Address Verification\" --templateOptions.description=\"Open source developer documentation for USPS Webtool's API. Working together to improve the developer experience for everyone.\" --templateOptions.image=https://s3-us-west-2.amazonaws.com/public.lob.com/marketing/opengraph2.png --options=docs/redocOptions.json --title=\"USPS WebTools API opensource documentation\" -o docs/index2.html"
+  },
+  "keywords": [
+    "USPS",
+    "API",
+    "WebTools",
+    "OpenAPI",
+    "Opensource"
+  ],
+  "author": "Lob Developer Experience Team",
+  "license": "MIT",
+  "dependencies": {
+    "redoc-cli": "^0.13.7"
+  }
+}

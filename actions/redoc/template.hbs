@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf8" />
+  <title>{{title}}</title>
+
+  <!-- Begin Meta -->
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  <meta name="keywords" content="{{keywords}}">
+  <meta name="ROBOTS" content="INDEX, FOLLOW">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="description" content="{{description}}">
+
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css'/>
+  <link rel="stylesheet" href="https://use.typekit.net/kay8yxk.css">
+  <link rel="shortcut icon" type="image/png" href="{{LOB_ASSETS_URL}}/sites/brand-favicon.ico">
+  <link rel='stylesheet' href='chunks/styles.min.css'/>
+  <style>
+    /* UTILITIES */
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+a {
+ color: #ecf0f5;
+ font-weight: bolder;
+}
+li {
+ list-style: none;
+}
+
+/* NAVBAR STYLING STARTS */
+.navbar {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding: 20px;
+ background-color: #3898ec;
+ color: #fff;
+}
+.nav-links a {
+ color: #fff;
+}
+/* LOGO */
+.logo {
+ font-size: 32px;
+}
+/* NAVBAR MENU */
+.menu {
+ display: flex;
+ gap: 1em;
+ font-size: 18px;
+}
+.menu a:hover {
+ background-color: #80cbeb;
+ border-radius: 5px;
+ transition: 0.3s ease;
+}
+.menu li {
+ padding: 5px 14px;
+}
+
+
+  </style>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-41294851-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-41294851-1');
+
+    class AnalyticsTracker {
+      static initialize () {
+        const selectorQs = 'ul.sc-euEtCV > li';
+
+        // Retain the current hash as the last seen
+        AnalyticsTracker._lastSeenTag = window.location.hash;
+
+        // Listen for click events on all relevant li tags
+        for (const ele of Array.from(document.querySelectorAll(selectorQs))) {
+          ele.addEventListener('click', () => {
+            // On recipt of the event, the on page navigation has not happened
+            // so we introduce a delay before we attempt to handle the navigationNotification
+            setTimeout(AnalyticsTracker.onPageNavigationNotificationHandler, 10);
+          });
+        }
+
+        // Listen for Scroll-stop
+        let scrollTimer = null;
+        window.addEventListener('scroll', () => {
+          if (scrollTimer !== null) {
+            clearTimeout(scrollTimer);
+          }
+          // We notify on page rest of at least half a second
+          scrollTimer = setTimeout(AnalyticsTracker.onPageNavigationNotificationHandler, 500);
+        }, false);
+
+        // Log the initial view with the hash
+        if (window.location.hash) {
+          AnalyticsTracker.dispatch('page_view');
+        }
+      }
+      static onPageNavigationNotificationHandler() {
+        if (AnalyticsTracker._lastSeenTag === window.location.hash) {
+          return; // Attempt to navigate to the same section. Return early, no-op
+        }
+
+        // Update the last seen and dispatch
+        AnalyticsTracker._lastSeenTag = window.location.hash;
+        AnalyticsTracker.dispatch('page_view')
+      }
+
+      static dispatch (eventType) {
+        gtag('event', eventType, {
+          page_title: document.title,
+          page_location: window.location.pathname + window.location.hash,
+          page_path: window.location.pathname + window.location.hash
+        });
+      }
+    }
+
+    window.addEventListener('load', (event) => {
+      AnalyticsTracker.initialize();
+    });
+  </script>
+
+  <script src="js/determine_widget.js"></script>
+ 
+  {{{redocHead}}}
+  {{#unless disableGoogleFont}}<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:300,400,700" rel="stylesheet">{{/unless}}
+</head>
+
+<body>
+
+<nav class="navbar">
+ <!-- LOGO -->
+ <div class="logo"><img src="images/mailbox-svgrepo-com.svg" style="height:50px; vertical-align:middle;"> USPS WebTools API Documentation</div>
+ <div style="float:right;">
+   <br><strong>Built with <img src="images/heart-svgrepo-com.svg" style="height:25px; vertical-align:middle;"> by <a href="https://www.lob.com" target="_blank">Lob</a></strong>
+ </div>
+ </nav>
+
+  <script type="text/javascript">
+  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.0.1";
+  analytics.load("{{segmentKey}}");
+  analytics.page()
+  }}();
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.37.0/autocomplete.jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js"></script>
+  <script src="chunks/bundle.js"></script>
+
+  {{{redocHTML}}} 
+
+  {{!-- add IDs to some of the extra styles --}}
+  <script>
+    $('.jnkRQj .collapser').attr('id','collapse-button')
+  </script>
+
+  <style>
+    code,.hoverable{color:#416581}
+    {{!-- extra styles to get around Redoc restrictions --}}
+    h3{color: #5f83a5;font-size: 15px;margin: 30px 0 20px;font-weight: 600}
+    .dFWqin pre[class*='language-']{background:#416581}
+    .dFWqin pre[class*='language-'] > code > span.token.string, .dFWqin pre[class*='language-'] > code > span.token.number, .dFWqin pre[class*='language-'] > code > span.token.constant, .dFWqin pre[class*='language-'] > code > span.token.boolean{color:#ecf0f5}
+    .dFWqin .token.property.string{color:#416581}
+    .coaOfs .token.property.string{color:#416581}
+    .coaOfs .token.boolean{color:#1878e0}
+    .coaOfs .token.atrule, .coaOfs .token.attr-value, .coaOfs .token.keyword{color:#1878e0}
+    .coaOfs .token.selector, .coaOfs .token.attr-name, .coaOfs .token.string, .coaOfs .token.char, .coaOfs .token.builtin, .coaOfs .token.inserted{color:#416581}
+    .dFWqin .token.selector, .dFWqin .token.attr-name, .dFWqin .token.string, .dFWqin .token.char, .dFWqin .token.builtin, .dFWqin .token.inserted{color:#416581}
+    .dFWqin .token.atrule, .dFWqin .token.attr-value, .dFWqin .token.keyword{color:#1878e0}
+    .dFWqin .token.boolean{color:#1878e0}
+    .dFWqin .token.selector + a, .dFWqin .token.attr-name + a, .dFWqin .token.string + a, .dFWqin .token.char + a, .dFWqin .token.builtin + a, .dFWqin .token.inserted + a, .dFWqin .token.selector + a:visited, .dFWqin .token.attr-name + a:visited, .dFWqin .token.string + a:visited, .dFWqin .token.char + a:visited, .dFWqin .token.builtin + a:visited, .dFWqin .token.inserted + a:visited{color:#416581}
+    {{!-- formdata payload colors --}}
+    .crBktj .token.selector, .crBktj .token.attr-name, .crBktj .token.string, .crBktj .token.char, .crBktj .token.builtin, .crBktj .token.inserted{color:#416581}
+    .crBktj .token.boolean{color:#1878e0}
+    .jnkRQj .collapser{color:#000000}
+    div.react-tabs__tab-panel > div > div > span{color:#416581}
+    div.react-tabs__tab-panel > div > div > div > span{color:#416581}
+    ul > li.react-tabs__tab.react-tabs__tab--selected{color:#ecf0f5}
+    ul > li.tab-success.react-tabs__tab--selected{color:#F6FFF4}
+    ul > li.tab-error.react-tabs__tab--selected{color:#fbf1f0}
+    .react-tabs__tab-panel > div > pre > .token.string, .react-tabs__tab-panel > div > pre > .token.builtin{color:#416581}
+    .react-tabs__tab-panel > div > pre > .token.operator,
+    .react-tabs__tab-panel > div > pre > .token.variable{color:#324350}
+    div.react-tabs__tab-panel.react-tabs__tab-panel--selected{border-radius:10px}
+
+    {{!-- sidebars fontweight --}}
+    ul[role='navigation'] li > label > span { font-weight: 300; }
+  </style>
+   <script type="text/javascript">
+   document.addEventListener("DOMContentLoaded", function(event) { 
+     //do work
+      var el = document.createElement("div");
+      el.innerHTML = 'Booya';
+      menu = document.getElementsByClassName("menu-content");
+      menu[0].appendChild(el);
+    });
+
+  </script>
+
+</body>
+
+</html>
