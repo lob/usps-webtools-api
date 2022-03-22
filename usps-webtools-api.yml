@@ -1,8 +1,8 @@
 openapi: 3.0.0
 info:
   version: '1.0'
-  title: 'USPS WebTools API'
-  description: 'This site is an open source effort to improve the experience for developers utilizing the <a href="https://www.usps.com/business/web-tools-apis/" target="_blank">USPS WebTools APIs</a>. <br><br>Documentation is generated using Redoc and an OpenAPI 3.0 spec created from the USPS official [Developers Guide]("https://www.usps.com/business/web-tools-apis/documentation-updates.htm") (PDF). <br><br>We have corrected errors and made UX improvements but welcome your feedback on how to improve this site in the future.  Contact us at <a href="mailto: lob-openapi@lob.com?subject=USPSWebTools docs" target="_blank">lob-openapi@lob.com</a>'  
+  title: 'USPS Web Tools API'
+  description: 'This site is an open source effort to improve the experience for developers utilizing the <a href="https://www.usps.com/business/web-tools-apis/" target="_blank">USPS Web Tools APIs</a>. <br><br>Documentation is generated using Redoc and an OpenAPI 3.0 spec created from the USPS official [Developers Guide]("https://www.usps.com/business/web-tools-apis/documentation-updates.htm") (PDF). <br><br>We have corrected errors and made UX improvements but welcome your feedback on how to improve this site in the future.  Contact us at <a href="mailto: lob-openapi@lob.com?subject=USPSWebTools docs" target="_blank">lob-openapi@lob.com</a>'  
 servers:
   - url: 'http://production.shippingapis.com'
 tags:
@@ -36,10 +36,10 @@ tags:
       data and report on real-time and historic mail statuses for 
       compliance audits.
       </p>
-  - name: WebTools Authentication
+  - name: Web Tools Authentication
     x-traitTag: true
     description: |
-      USPS Webtools API are accessible using your Web Tools User ID. To authenticate a request add 
+      USPS Web Tools API are accessible using your Web Tools User ID. To authenticate a request add 
       the USERID attribute to the outermost XML element and set the value equal to your Web Tools User ID.
       <br><br>
       For example, `<AddressValidateRequest USERID="{WEB_TOOLS_USER_ID}">`
@@ -60,7 +60,7 @@ tags:
     x-traitTag: true
     description: |
       We've created a Postman public workspace for developers to explore the 
-      USPS WebTools APIs.  You will need your own WebTools UserID to use this 
+      USPS Web Tools APIs.  You will need your own Web Tools UserID to use this 
       collection.  [See Authentication](#tag/Authentication)
 
       ### Address Verification
@@ -201,7 +201,7 @@ tags:
       * Anticipated volume:
       * Any additional information from the customer:
       
-      Four service APIs are offered in conjunction with “Revision=1” of the Package Tracking “Fields” API: Track and Confirm by Email, Proof of Delivery, Tracking Proof of Delivery, and Return Receipt Electronic. The response data from Track/Confirm Fields request determines which services are available for a tracking ID. Each request input to the Web Tools server for the tracking service APIs is limited to one tracking ID. These APIs require additional permissions from the WebTools Program Office in order to gain
+      Four service APIs are offered in conjunction with “Revision=1” of the Package Tracking “Fields” API: Track and Confirm by Email, Proof of Delivery, Tracking Proof of Delivery, and Return Receipt Electronic. The response data from Track/Confirm Fields request determines which services are available for a tracking ID. Each request input to the Web Tools server for the tracking service APIs is limited to one tracking ID. These APIs require additional permissions from the Web Tools Program Office in order to gain
         
       USPS Web Tools User Guide
       access. When you request access for these APIs, please identify your anticipated API volume, mailer ID, and how you will be utilizing this API. A mailer identification number (MID) is a 6 or 9-digit number assigned to a customer through the USPS Business Customer Gateway (BCG). Please refer to the following links for help:
@@ -286,7 +286,7 @@ tags:
   - name: Rate Calculation
     x-traitTag: true
     description: |
-      USPS WebTools - Domestic Rate Calculator
+      USPS Web Tools - Domestic Rate Calculator
   
   - name: Domestic
     x-traitTag: false
@@ -307,7 +307,7 @@ x-tagGroups:
   - name: Overview
     tags:
       - Who is Lob?
-      - WebTools Authentication
+      - Web Tools Authentication
       - Postman
       - Address Verification APIs
       - Address
