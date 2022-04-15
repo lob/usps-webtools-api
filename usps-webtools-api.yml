@@ -182,25 +182,27 @@ tags:
       Note: This applies to both TrackV2 API simplified track requests (i.e., “TrackRequest”) and 
       TrackV2 API detailed track requests (i.e., “TrackFieldRequest”). Users should follow these 
       steps to submit a request for Tracking APIs access: 
+
       Navigate to: https://usps.force.com/emailus/s/web-tools-inquiry and provide user 
       name (Web Tools User ID), select “Tracking APIs”, select “Track API” and submit the 
       request with the following information below in the “Additional Information” text box:
-      
-      * Web Tools UserID:
-      * Mailer ID (MID):
-      * Company Name:
-      * Requester First and Last Name:
-      * Requester Email:
-      * Requester Phone number:
-      * Mailing Address:
-      * Mailing City:
-      * Mailing State:
-      * Mailing Zip Code:
-      * PROD Registration Date:
-      * API access requested: Package Tracking (API=TrackV2)
-      * Anticipated volume:
-      * Any additional information from the customer:
-      
+      <br><br>
+      <ul>
+      <li>Web Tools UserID</li>
+      <li>Mailer ID (MID)</li>
+      <li>Company Name</li>
+      <li>Requester First and Last Name</li>
+      <li>Requester Email</li>
+      <li>Requester Phone number</li>
+      <li>Mailing Address</li>
+      <li>Mailing City</li>
+      <li>Mailing State</li>
+      <li>Mailing Zip Code</li>
+      <li>PROD Registration Date</li>
+      <li>API access requested: Package Tracking (API=TrackV2)</li>
+      <li>Anticipated volume</li>
+      <li>Any additional information from the customer</li>
+      </ul>
       Four service APIs are offered in conjunction with “Revision=1” of the Package Tracking “Fields” API: Track and Confirm by Email, Proof of Delivery, Tracking Proof of Delivery, and Return Receipt Electronic. The response data from Track/Confirm Fields request determines which services are available for a tracking ID. Each request input to the Web Tools server for the tracking service APIs is limited to one tracking ID. These APIs require additional permissions from the Web Tools Program Office in order to gain
         
       USPS Web Tools User Guide
@@ -213,11 +215,11 @@ tags:
     description: |
       The Track/Confirm Web Tools API provides tracking status and delivery information for USPS packages. The Track/Confirm 
       API limits the data requested to thirty-five (35) packages per transaction.
-
+      <br><br>
       Note: The data returned by the Package Track Web Tools API is intended for display only. The content or sequence of the String 
       data returned by the API may change. Consequently, if you desire to apply any kind of logic against the tracking data, then 
       you will need to use the Track/Confirm fields.
-
+      <br><br>
       The Package Tracking “Fields” API is similar to the Package Track API except for the request fields, API name, and 
       the return information. Data returned still contains the detail and summary information, but this information is 
       broken down into fields instead of having only one line of text. Up to 10 tracking IDs may be contained in each 
@@ -343,7 +345,7 @@ paths:
             default: CityStateLookup
         - name: XML
           in: query
-          description: This query parameter defines the XML payload. <br>`It can not be passed in the body`.
+          description: This query parameter defines the XML payload and it can not be passed in the body<br><br><div class="code"><p id="isPasted">&lt;CityStateLookupRequest USERID=&quot;XXXXXX&quot;&gt;<br>&nbsp; &nbsp; &lt;ZipCode&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Zip5&gt;94107&lt;/Zip5&gt;<br>&nbsp; &nbsp; &lt;/ZipCode&gt;<br>&lt;/CityStateLookupRequest&gt;</div>
           required: true
           content:
             text/xml:
@@ -384,7 +386,7 @@ paths:
             default: Verify
         - name: XML
           in: query
-          description: This query parameter defines the XML payload. <br>`It can not be passed in the body`.
+          description: This query parameter defines the XML payload and can not be passed in the body<br><br><div class="code">&lt;AddressValidateRequest USERID=&quot;XXXXXX&quot;&gt;<br>&nbsp; &nbsp; &lt;Address&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Revision&gt;1&lt;/Revision&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Address1&gt;Suite 6100&lt;/Address1&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Address2&gt;185 Berry St&lt;/Address2&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;City&gt;San Francisco&lt;/City&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;State&gt;CA&lt;/State&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Zip5&gt;94556&lt;/Zip5&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Zip4&gt;&lt;/Zip4&gt;<br>&nbsp; &nbsp; &lt;/Address&gt;<br>&lt;/AddressValidateRequest&gt;</div>
           required: true
           content:
             text/xml:
@@ -443,7 +445,7 @@ paths:
             default: ZipCodeLookup
         - name: XML
           in: query
-          description: This query parameter defines the XML payload. <br>`It can not be passed in the body`.
+          description: This query parameter defines the XML payload. and it can not be passed in the body<br><br><div class="code">&lt;ZipCodeLookupRequest USERID=&quot;XXXXXX&quot;&gt;<br>&nbsp; &nbsp; &lt;Address&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Address1&gt;Suite 6100&lt;/Address1&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Address2&gt;185 Berry St&lt;/Address2&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;City&gt;San Francisco&lt;/City&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;State&gt;CA&lt;/State&gt;<br>&nbsp; &nbsp; &lt;/Address&gt;<br>&lt;/ZipCodeLookupRequest&gt;</div>
           required: true
           content:
             text/xml:
@@ -490,7 +492,7 @@ paths:
             default: PriorityMail
         - name: XML
           in: query
-          description: XML payload
+          description: XML payload <br><br><div class="code">&lt;PriorityMailRequest USERID=&rdquo;XXXXXXXXXXXX&rdquo;&gt;<br>&nbsp; &nbsp; &lt;OriginZip&gt;90201&lt;/OriginZip&gt;<br>&nbsp; &nbsp; &lt;DestinationZip&gt;21114&lt;/DestinationZip&gt;<br>&lt;/PriorityMailRequest&gt;</div>
           required: true
           content:
             text/xml:
@@ -530,7 +532,7 @@ paths:
             default: StandardB
         - name: XML
           in: query
-          description: XML payload
+          description: XML payload<br><br><div class="code">&lt;StandardBRequest USERID=&rdquo;XXXXXXXXXXXX&rdquo;&gt;<br>&nbsp; &nbsp; &lt;OriginZip&gt;90201&lt;/OriginZip&gt;<br>&nbsp; &nbsp; &lt;DestinationZip&gt;21114&lt;/DestinationZip&gt;<br>&lt;/StandardBRequest&gt;<br></div>
           required: true
           content:
             text/xml:
@@ -568,7 +570,7 @@ paths:
             default: FirstClassMail
         - name: XML
           in: query
-          description: XML payload
+          description: XML payload<br><br><div class="code">&lt;FirstClassMailRequest USERID=&rdquo;XXXXXXXXXXXX&rdquo;&gt;<br>&nbsp; &nbsp; &lt;OriginZip&gt;90201&lt;/OriginZip&gt;<br>&nbsp; &nbsp; &lt;DestinationZip&gt;21114&lt;/DestinationZip&gt;<br>&lt;/FirstClassMailRequest&gt;<br></div>
           required: true
           content:
             text/xml:
@@ -606,7 +608,7 @@ paths:
             default: ExpressMailCommitment
         - name: XML
           in: query
-          description: XML payload
+          description: XML payload<br><br><div class="code">&lt;ExpressMailCommitmentRequest USERID=&quot;XXXXXXXXXXXXX&quot;&gt;<br>&nbsp; &nbsp; &lt;OriginZIP&gt;63123&lt;/OriginZIP&gt;<br>&nbsp; &nbsp; &lt;DestinationZIP&gt;89301&lt;/DestinationZIP&gt;<br>&nbsp; &nbsp; &lt;Date&gt;05-26-2021&lt;/Date&gt;<br>&nbsp; &nbsp; &lt;DropOffTime&gt;09:00&lt;/DropOffTime&gt;<br>&nbsp; &nbsp; &lt;ReturnDates&gt;true&lt;/ReturnDates&gt;<br>&nbsp; &nbsp; &lt;PMGuarantee&gt;Y&lt;/PMGuarantee&gt;<br>&lt;/ExpressMailCommitmentRequest&gt;</div>
           required: true
           content:
             text/xml:
@@ -682,7 +684,7 @@ paths:
             default: PTSTPod
         - name: XML
           in: query
-          description: XML payload
+          description: XML payload<br><br><div class="code">&lt;PTSTPodRequest USERID=&quot;XXXXXXXXXXXX&quot;&gt;<br>&nbsp; &nbsp; &lt;TrackId&gt;XXXXXXXXXXX&lt;/TrackId &gt;<br>&nbsp; &nbsp; &lt;MpSuffix&gt;9402&lt;/MpSuffix&gt;<br>&nbsp; &nbsp; &lt;MpDate&gt;2009-07-02 00:42:23.35744&lt;/MpDate&gt;<br>&nbsp; &nbsp; &lt;RequestType&gt;Email&lt;/RequestType&gt;<br>&nbsp; &nbsp; &lt;FirstName&gt;John&lt;/FirstName&gt;<br>&nbsp; &nbsp; &lt;LastName&gt;Doe&lt;/LastName&gt;<br>&nbsp; &nbsp; &lt;Email1&gt;cpapple@email.com &lt;/Email1&gt;<br>&nbsp; &nbsp; &lt;Email2&gt;&lt;/Email2&gt;<br>&nbsp; &nbsp; &lt;Email3&gt;&lt;/Email3&gt;<br>&nbsp; &nbsp; &lt;CustRegID&gt;1234567890&lt;/CustRegID&gt;<br>&nbsp; &nbsp; &lt;TableCode&gt;T&lt;/TableCode&gt;<br>&nbsp; &nbsp; &lt;ClientIp&gt;127.0.0.1&lt;/ClientIp&gt;<br>&nbsp; &nbsp; &lt;SourceId&gt;IVR&lt;/SourceId&gt;<br>&lt;/PTSTPodRequest&gt;</div>
           required: true
           content:
             text/xml:
@@ -730,7 +732,7 @@ paths:
             default: PTSRre
         - name: XML
           in: query
-          description: XML payload
+          description: XML payload<br><br><div class="code">&lt;PTSRreRequest USERID=&quot;XXXXXXXXXXXX&quot;&gt;&nbsp;<br>&nbsp; &nbsp; &lt;TrackId&gt;XXXXXXXXXXX&lt;/TrackId &gt;&nbsp;<br>&nbsp; &nbsp; &lt;ClientIp&gt;127.0.0.1&lt;/ClientIp&gt;<br>&nbsp; &nbsp; &lt;SourceId&gt;XYZ Corp&lt;/SourceId&gt;<br>&nbsp; &nbsp; &lt;MpSuffix&gt;9402&lt;/MpSuffix&gt;<br>&nbsp; &nbsp; &lt;MpDate&gt;2009-07-02 00:42:23.35744&lt;/MpDate&gt;<br>&nbsp; &nbsp; &lt;FirstName&gt;John&lt;/FirstName&gt;<br>&nbsp; &nbsp; &lt;LastName&gt;Doe&lt;/LastName&gt;<br>&nbsp; &nbsp; &lt;Email1&gt;cpapple@email.com&lt;/Email1&gt;<br>&nbsp; &nbsp; &lt;Email2&gt;&lt;/Email2&gt;<br>&nbsp; &nbsp; &lt;Email3&gt;&lt;/Email3&gt;<br>&nbsp; &nbsp; &lt;TableCode&gt;T&lt;/TableCode&gt;<br>&nbsp; &nbsp; &lt;CustRegID&gt;1234567890&lt;/CustRegID&gt;<br>&lt;/PTSRreRequest&gt;</div>
           required: true
           content:
             text/xml:
@@ -777,7 +779,7 @@ paths:
             default: PTSPod
         - name: XML
           in: query
-          description: XML payload
+          description: XML payload<br><br><div class="code">&lt;PTSPodRequest USERID=&quot;XXXXXXXXXXXX&quot;&gt;&nbsp;<br>&nbsp; &nbsp; &lt;TrackId&gt;XXXXXXXXXXX&lt;/TrackId &gt;<br>&nbsp; &nbsp; &lt;ClientIp&gt;127.0.0.1&lt;/ClientIp&gt;<br>&nbsp; &nbsp; &lt;SourceId&gt;XXXXXX&lt;/SourceId&gt;<br>&nbsp; &nbsp; &lt;MpSuffix&gt;9402&lt;/MpSuffix&gt;<br>&nbsp; &nbsp; &lt;MpDate&gt;2009-07-02 00:42:23.35744&lt;/MpDate&gt;<br>&nbsp; &nbsp; &lt;RequestType&gt;Email&lt;/RequestType&gt;<br>&nbsp; &nbsp; &lt;FirstName&gt;John&lt;/FirstName&gt;<br>&nbsp; &nbsp; &lt;LastName&gt;Doe&lt;/LastName&gt;<br>&nbsp; &nbsp; &lt;Email1&gt;test@email.com &lt;/Email1&gt;<br>&nbsp; &nbsp; &lt;Email2&gt;&lt;/Email2&gt;<br>&nbsp; &nbsp; &lt;Email3&gt;&lt;/Email3&gt;&nbsp;<br>&nbsp; &nbsp; &lt;TableCode&gt;T&lt;/TableCode&gt;<br>&nbsp; &nbsp; &lt;CustRegID&gt;1234567890&lt;/CustRegID&gt;<br>&lt;/PTSPodRequest&gt;</div>
           required: true
           content:
             text/xml:
@@ -824,7 +826,7 @@ paths:
             default: PTSEmail
         - name: XML
           in: query
-          description: XML payload
+          description: XML payload<br><br><div class="code">&lt;PTSEmailRequest USERID=&quot;XXXXXXXXXXXX&quot;&gt;&nbsp;<br>&nbsp; &nbsp; &lt;TrackId&gt;XXXXXXXXXXX&lt;/TrackId &gt;&nbsp;<br>&nbsp; &nbsp; &lt;ClientIp&gt;127.2.0.1&lt;/ClientIp&gt;<br>&nbsp; &nbsp; &lt;SourceId&gt;XYZ Corp&lt;/SourceId&gt;<br>&nbsp; &nbsp; &lt;MpSuffix &gt;9402&lt;/MpSuffix&gt;<br>&nbsp; &nbsp; &lt;MpDate &gt;2021-07-02 00:42:23.35744&lt;/MpDate&gt;&nbsp;<br>&nbsp; &nbsp; &lt;RequestType&gt;EN&lt;/RequestType&gt;&nbsp;<br>&nbsp; &nbsp; &lt;FirstName&gt;John&lt;/FirstName&gt;<br>&nbsp; &nbsp; &lt;LastName &gt;Doe&lt;/LastName&gt;&nbsp;<br>&nbsp; &nbsp; &lt;Email1&gt;test@email.com&lt;/Email1&gt;&nbsp;<br>&nbsp; &nbsp; &lt;Email2&gt;&lt;/Email2&gt;<br>&nbsp; &nbsp; &lt;Email3&gt;&lt;/Email3&gt;<br>&lt;/PTSEmailRequest&gt;</div>
           required: true
           content:
             text/xml:
@@ -863,7 +865,7 @@ paths:
             default: TrackV2
         - name: XML
           in: query
-          description: XML payload
+          description: XML payload<br><br><div class="code">&lt;TrackRequest USERID=&quot;XXXXXXXXXXXX&quot;&gt;<br>&nbsp; &nbsp; &lt;TrackID ID=&quot;XXXXXXXXXXX1&quot;&gt;&lt;/TrackID&gt;<br>&nbsp; &nbsp; &lt;TrackID ID=&quot;XXXXXXXXXXX2&quot;&gt;&lt;/TrackID&gt;<br>&lt;/TrackRequest&gt;<br></div>
           required: true
           content:
             text/xml:
@@ -905,7 +907,7 @@ paths:
             default: TrackV2
         - name: XML
           in: query
-          description: XML payload
+          description: XML payload<br><br><div class="code">&lt;TrackFieldRequest USERID=&quot;XXXXXXXXXXXX&quot;&gt;<br>&nbsp; &nbsp; &lt;Revision&gt;1&lt;/Revision&gt;&nbsp;<br>&nbsp; &nbsp; &lt;ClientIp&gt;122.3.3&lt;/ClientIp&gt;<br>&nbsp; &nbsp; &lt;SourceId&gt;XYZ Corp&lt;/SourceId&gt;<br>&nbsp; &nbsp; &lt;TrackID ID=&quot;XXXXXXXXXXXXXXXX&quot;/&gt;&nbsp;<br>&lt;/TrackFieldRequest&gt;<br></div>
           required: true
           content:
             text/xml:
@@ -1370,7 +1372,7 @@ paths:
             default: RateV4
         - name: XML
           in: query
-          description: XML payload
+          description: XML payload<br><br><div class="code">&lt;RateV4Request USERID=&quot;XXXXXX&quot;&gt;<br>&nbsp; &nbsp; &lt;Revision&gt;2&lt;/Revision&gt;<br>&nbsp; &nbsp; &lt;Package ID=&quot;0&quot;&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Service&gt; PRIORITY &lt;/Service&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;ZipOrigination&gt;2201&lt;/ZipOrigination&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;ZipDestination&gt;26301&lt;/ZipDestination&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Pounds&gt;8&lt;/Pounds&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Ounces&gt;2&lt;/Ounces&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Container&gt;&lt;/Container&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Machinable&gt;TRUE&lt;/Machinable&gt;<br>&nbsp; &nbsp; &lt;/Package&gt;<br>&lt;/RateV4Request&gt;</div>
           required: true
           content:
             text/xml:

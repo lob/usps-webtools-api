@@ -41,4 +41,12 @@
    .menu li {
     padding: 5px 14px;
    }
+   .code {
+    background-color: #eee;  
+    border: 1px solid #999; 
+    display: block;  
+    padding: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: small;
+   }
    
