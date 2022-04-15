@@ -329,7 +329,7 @@ x-tagGroups:
       - Rate Calculation
       - Domestic
 paths:
-  /ShippingAPI.dll?API="CityStateLookup&XML=":
+  /ShippingAPI.dll?API=CityStateLookup":
     get:
       summary: 'Lookup City & State'
       operationId: city_state_lookup
@@ -370,7 +370,7 @@ paths:
                                 <State>CA</State>
                             </ZipCode>
                         </CityStateLookupResponse>'
-  /ShippingAPI.dll?API="Verify&XML=":
+  /ShippingAPI.dll?API=Verify:
     get:
       summary: 'Verify a US address'
       operationId: verify
@@ -429,7 +429,7 @@ paths:
                                 <Vacant>N</Vacant>
                             </Address>
                         </AddressValidateResponse>'
-  /ShippingAPI.dll?API="ZipCodeLookup&XML=":
+  /ShippingAPI.dll?API=ZipCodeLookup:
     get:
       summary: 'Lookup a ZIP Code'
       operationId: zipcode_lookup
