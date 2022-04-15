@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   version: '1.0'
   title: 'USPS Web Tools API'
-  description: 'This site is an open source effort to improve the experience for developers utilizing the <a href="https://www.usps.com/business/web-tools-apis/" target="_blank">USPS Web Tools APIs</a>. <br><br>Documentation is generated using Redoc and an OpenAPI 3.0 spec created from the USPS official [Developers Guide]("https://www.usps.com/business/web-tools-apis/documentation-updates.htm") (PDF). <br><br>We have corrected errors and made UX improvements but welcome your feedback on how to improve this site in the future.  Contact us at <a href="mailto: lob-openapi@lob.com?subject=USPSWebTools docs" target="_blank">lob-openapi@lob.com</a>'  
+  description: 'This site is an open source effort to improve the experience for developers utilizing the <a href="https://www.usps.com/business/web-tools-apis/" target="_blank">USPS Web Tools APIs</a>. <br><br>Documentation is generated using [Redoc](https://github.com/Redocly/redoc) and an [OpenAPI 3.0](https://spec.openapis.org/oas/v3.0.0) spec created from the USPS official [documentation](https://www.usps.com/business/web-tools-apis/documentation-updates.htm") (PDF format). <br><br>We have corrected errors and made UX improvements but welcome your feedback on how to improve this site in the future.  Contact us at <a href="mailto: lob-openapi@lob.com?subject=USPSWebTools docs" target="_blank">lob-openapi@lob.com</a>'  
 servers:
   - url: 'http://production.shippingapis.com'
 tags:
@@ -42,9 +42,13 @@ tags:
       USPS Web Tools API are accessible using your Web Tools User ID. To authenticate a request add 
       the USERID attribute to the outermost XML element and set the value equal to your Web Tools User ID.
       <br><br>
-      For example, `<AddressValidateRequest USERID="{WEB_TOOLS_USER_ID}">`
+      For example, `<AddressValidateRequest USERID="{WEB_TOOLS_USER_NAME}">`
       <br><br>
       [Register](https://www.usps.com/business/web-tools-apis/) on the USPS Web Tools API Portal for your Web Tools ID.
+      <br><br>
+      You'll receive an email with your Web Tools username (This is your USERID)
+      <br><br>
+      <img src="images/webtools-email-username.png">
       <br><br>
       
       USPS official [Developers Guide]("https://www.usps.com/business/web-tools-apis/documentation-updates.htm") - PDF format.
@@ -351,7 +355,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CityStateLookupRequest'
-              x-example: '<CityStateLookupRequest USERID="XXXXXX">
+              x-example: '<CityStateLookupRequest USERID="{WEB_TOOLS_USER_NAME}">
                             <ZipCode>
                                 <Zip5>94107</Zip5>
                             </ZipCode>
@@ -386,15 +390,15 @@ paths:
             default: Verify
         - name: XML
           in: query
-          description: This query parameter defines the XML payload and can not be passed in the body<br><br><div class="code">&lt;AddressValidateRequest USERID=&quot;XXXXXX&quot;&gt;<br>&nbsp; &nbsp; &lt;Address&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Revision&gt;1&lt;/Revision&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Address1&gt;Suite 6100&lt;/Address1&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Address2&gt;185 Berry St&lt;/Address2&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;City&gt;San Francisco&lt;/City&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;State&gt;CA&lt;/State&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Zip5&gt;94556&lt;/Zip5&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Zip4&gt;&lt;/Zip4&gt;<br>&nbsp; &nbsp; &lt;/Address&gt;<br>&lt;/AddressValidateRequest&gt;</div>
+          description: This query parameter defines the XML payload and can not be passed in the body<br><br><div class="code">&lt;AddressValidateRequest USERID=&quot;XXXXXX&quot;&gt;<br>&nbsp; &nbsp; &lt;Revision&gt;1&lt;/Revision&gt;<br>&nbsp; &nbsp; &lt;Address&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Address1&gt;Suite 6100&lt;/Address1&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Address2&gt;185 Berry St&lt;/Address2&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;City&gt;San Francisco&lt;/City&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;State&gt;CA&lt;/State&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Zip5&gt;94556&lt;/Zip5&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Zip4&gt;&lt;/Zip4&gt;<br>&nbsp; &nbsp; &lt;/Address&gt;<br>&lt;/AddressValidateRequest&gt;</div>
           required: true
           content:
             text/xml:
               schema:
                 $ref: '#/components/schemas/AddressValidateRequest'
-              example: '<AddressValidateRequest USERID="XXXXXX">
+              example: '<AddressValidateRequest USERID="{WEB_TOOLS_USER_NAME}">
+                            <Revision>1</Revision>
                             <Address>
-                                <Revision>1</Revision>
                                 <Address1>Suite 6100</Address1>
                                 <Address2>185 Berry St</Address2>
                                 <City>San Francisco</City>
@@ -451,7 +455,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ZipCodeLookupRequest'
-              example: '<ZipCodeLookupRequest USERID="XXXXXX">
+              example: '<ZipCodeLookupRequest USERID="{WEB_TOOLS_USER_NAME}">
                             <Address>
                                 <Address1>Suite 6100</Address1>
                                 <Address2>185 Berry St</Address2>
@@ -476,7 +480,7 @@ paths:
                                 <Zip4>1741</Zip4>
                             </Address>
                         </ZipCodeLookupResponse>'
-  /ShippingAPI.dll?API="PriorityMail":
+  /ShippingAPI.dll?API=PriorityMail:
     get:
       summary: 'Priority Mail Service'
       operationId: priority_mail
@@ -516,7 +520,7 @@ paths:
                             <EffectiveAcceptanceDate>2022-02-24</EffectiveAcceptanceDate>
                             <ScheduledDeliveryDate>2022-02-28</ScheduledDeliveryDate>
                         </PriorityMailResponse>'
-  /ShippingAPI.dll?API="StandardB":
+  /ShippingAPI.dll?API=StandardB:
     get:
       summary: 'Standard B Service'
       operationId: standardb
@@ -554,7 +558,7 @@ paths:
                             <DestinationZip>21114</DestinationZip>
                             <Days>7</Days>
                         </StandardBResponse>'
-  /ShippingAPI.dll?API="FirstClassMail":
+  /ShippingAPI.dll?API=FirstClassMail:
     get:
       summary: 'First Class Mail Service'
       operationId: first_class_mail
@@ -592,7 +596,7 @@ paths:
                             <DestinationZip>21114</DestinationZip>
                             <Days>3</Days>
                         </FirstClassMailResponse>'
-  /ShippingAPI.dll?API="ExpressMailCommitment":
+  /ShippingAPI.dll?API=ExpressMailCommitment:
     get:
       summary: 'Express Mail Commitment Service'
       operationId: express_mail_commitment
@@ -614,7 +618,7 @@ paths:
             text/xml:
               schema:
                   $ref: '#/components/schemas/ExpressMailCommitmentRequest'
-              example: '<ExpressMailCommitmentRequest USERID="XXXXXXXXXXXXX">
+              example: '<ExpressMailCommitmentRequest USERID="{WEB_TOOLS_USER_NAME}">
                             <OriginZIP>63123</OriginZIP>
                             <DestinationZIP>89301</DestinationZIP>
                             <Date>05-26-2021</Date>
@@ -690,7 +694,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/PTSTPodRequest'
-              example: '<PTSTPodRequest USERID="XXXXXXXXXXXX">
+              example: '<PTSTPodRequest USERID="{WEB_TOOLS_USER_NAME}">
                           <TrackId>XXXXXXXXXXX</TrackId >
                           <MpSuffix>9402</MpSuffix>
                           <MpDate>2009-07-02 00:42:23.35744</MpDate>
@@ -738,7 +742,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/PTSRreRequest'
-              example: '<PTSRreRequest USERID="XXXXXXXXXXXX"> 
+              example: '<PTSRreRequest USERID="{WEB_TOOLS_USER_NAME}"> 
                           <TrackId>XXXXXXXXXXX</TrackId > 
                           <ClientIp>127.0.0.1</ClientIp>
                           <SourceId>XYZ Corp</SourceId>
@@ -785,7 +789,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/PTSPodRequest'
-              example: '<PTSPodRequest USERID="XXXXXXXXXXXX"> 
+              example: '<PTSPodRequest USERID="{WEB_TOOLS_USER_NAME}"> 
                           <TrackId>XXXXXXXXXXX</TrackId >
                           <ClientIp>127.0.0.1</ClientIp>
                           <SourceId>XXXXXX</SourceId>
@@ -832,7 +836,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/PTSEmailRequest'
-              example: '<PTSEmailRequest USERID="XXXXXXXXXXXX"> <TrackId>XXXXXXXXXXX</TrackId > <ClientIp>127.2.0.1</ClientIp>
+              example: '<PTSEmailRequest USERID="{WEB_TOOLS_USER_NAME}"> <TrackId>XXXXXXXXXXX</TrackId > <ClientIp>127.2.0.1</ClientIp>
                           <SourceId>XYZ Corp</SourceId>
                           <MpSuffix >9402</MpSuffix>
                           <MpDate >2009-07-02 00:42:23.35744</MpDate> <RequestType>EN</RequestType> <FirstName>John</FirstName>
@@ -871,7 +875,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/TrackRequest'
-              example: '<TrackRequest USERID="XXXXXXXXXXXX">
+              example: '<TrackRequest USERID="{WEB_TOOLS_USER_NAME}">
                             <TrackID ID="XXXXXXXXXXX1"></TrackID>
                             <TrackID ID="XXXXXXXXXXX2"></TrackID>
                         </TrackRequest>'
@@ -913,7 +917,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/TrackFieldRequest'
-              example: '<TrackFieldRequest USERID="XXXXXXXXXXXX"> 
+              example: '<TrackFieldRequest USERID="{WEB_TOOLS_USER_NAME}"> 
                             <Revision>1</Revision> 
                             <ClientIp>122.3.3</ClientIp>
                             <SourceId>XYZ Corp</SourceId>
@@ -1378,7 +1382,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RateV4Request'
-                example: '<RateV4Request USERID="XXXXXX">
+                example: '<RateV4Request USERID="{WEB_TOOLS_USER_NAME}">
                             <Revision>2</Revision>
                             <Package ID="0">
                                 <Service> PRIORITY </Service>
