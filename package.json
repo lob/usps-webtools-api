@@ -5,7 +5,7 @@
     "node": ">=14.16.0",
     "npm": ">=7.9.0"
   },
-  "description": "A collection of OpenAPI specifications for USPS WebTools APIs",
+  "description": "A community supported OpenAPI specifications, documentation and resources for USPS WebTools APIs",
   "main": "",
   "config": {
     "specfile": "usps-webtools-api.yml"
